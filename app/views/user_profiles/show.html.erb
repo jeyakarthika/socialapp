@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user_profile.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user_profile.phone %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @user_profile.picture %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @user_profile.linkedin %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_profile.user.email %>
+</p>
+
+<h3><%= @user_profile.name %>'s Startups:</h3>
+<ul>
+  <% @user_profile.user.startup_profiles.each do |startup_profile| %>
+    <li><%= link_to startup_profile.name, startup_profile %></li>
+  <% end %>
+</ul>
+
+<% if @user_profile.user == current_user %>
+  <%= link_to 'Edit', edit_user_profile_path(@user_profile) %>
+<% end %>

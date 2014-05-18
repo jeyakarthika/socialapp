@@ -1,0 +1,2 @@
+module StartupProfilesHelper
+end

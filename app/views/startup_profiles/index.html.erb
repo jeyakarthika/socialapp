@@ -1,0 +1,37 @@
+<h1>Listing startup_profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Suburb</th>
+      <th>State</th>
+      <th>Postcode</th>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @startup_profiles.each do |startup_profile| %>
+      <tr>
+        <td><%= startup_profile.name %></td>
+        <td><%= startup_profile.address %></td>
+        <td><%= startup_profile.suburb %></td>
+        <td><%= startup_profile.state %></td>
+        <td><%= startup_profile.postcode %></td>
+        <td><%= startup_profile.country %></td>
+        <td><%= link_to 'Show', startup_profile %></td>
+        <td><%= link_to 'Edit', edit_startup_profile_path(startup_profile) %></td>
+        <td><%= link_to 'Destroy', startup_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Startup profile', new_startup_profile_path %>

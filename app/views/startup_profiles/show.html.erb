@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+<h3>People in this startup:</h3>
+<ul>
+  <% @startup_profile.users.each do |user| %>
+    <li><%= user.user_profile.name %></li>
+    <% end %>
+</ul>
+
+<% if user_signed_in? %>
+  <% if !@startup_profile.users.include?(current_user) %>
+    <p>
+      <%= link_to "I work here", join_startup_profile_path, class: 'btn btn-info' %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to "I don't work here anymore!", leave_startup_profile_path, class: 'btn btn-info' %>
+    </p>
+  <% end %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @startup_profile.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @startup_profile.address %>
+</p>
+
+<p>
+  <strong>Suburb:</strong>
+  <%= @startup_profile.suburb %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @startup_profile.state %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @startup_profile.postcode %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @startup_profile.country %>
+</p>
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_startup_profile_path(@startup_profile) %> |
+<% end %>
+<%= link_to 'Back', startup_profiles_path %>
